@@ -1,8 +1,7 @@
 import os
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
-import streamlit as st
-import joblib
-
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 import streamlit as st
 import joblib
 model=joblib.load('spam ham')
