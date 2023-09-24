@@ -1,16 +1,13 @@
-
 import os
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
+import streamlit as st
 import joblib
-
-def spam_ham_classifier(input_text):
-    model = joblib.load('spam ham')
-    prediction = model.predict([input_text])
-    return prediction[0]
-
-# Example usage:
-input_text = "ENTER YOUR TEXT HERE"  # Replace with your input text
-prediction = spam_ham_classifier(input_text)
-print(prediction)
-
+model=joblib.load('spam ham')
+st.title('SPAM HAM CLASSIFIER')
+ip=st.text_input('ENTER YOUR TEXT')
+op=model.predict([ip])
+if st.button('Predict'):
+  st.title(op[0])
                                 
